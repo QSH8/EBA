@@ -32,8 +32,27 @@ body {
     height: calc(100%/(1080/600));
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: ;
     align-items: center;
 
+    border-radius: 20px;
     background-color: rgb(63, 63, 63);
+    box-shadow: rgb(63, 63, 63) 0 0 10px 10px;
+}
+
+.form {
+    width: calc(100%*(800/1200));
+    text-align: center
+}
+.form > p {
+    padding-bottom:10px
+}
+.form > textarea {
+
+    resize: none;
+    color: black;
+}
+.form-response {
+
 }

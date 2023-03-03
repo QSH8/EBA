@@ -9,7 +9,16 @@
 </head>
 <body>
     <main class="wrapper">
-        <div class="form">HI</div>
+        <form class="form" method="post">
+            <p style="padding-bottom:10px" type="text" class="form__title">
+                Корректировка ввода
+            </p>
+            <textarea name="form__textarea" id="textarea"
+                      placeholder="Введите свою строку..">
+            </textarea>
+            <button type="submit" class="form__submit"></button>
+        </form>
+        <div class="form-response">HI</div>
     </main>
 </body>
 </html>
