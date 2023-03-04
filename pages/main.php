@@ -13,12 +13,18 @@
             <p style="padding-bottom:10px" type="text" class="form__title">
                 Корректировка ввода
             </p>
-            <textarea name="form__textarea" id="textarea"
-                      placeholder="Введите свою строку..">
-            </textarea>
-            <button type="submit" class="form__submit"></button>
+            <div class="form-request">
+                <textarea name="form__textarea" id="textarea"
+                          placeholder="Введите свою строку..">
+                </textarea>
+                <button type="submit" class="form__submit">Проверить</button>
+            </div>
         </form>
-        <div class="form-response">HI</div>
+        <div class="form-response">
+            <p class="form-response__query">HIddddddddddddddd</>
+            <p class="form-response__query">HIddddddddddddddd</p>
+            
+        </div>
     </main>
 </body>
 </html>
