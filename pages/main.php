@@ -1,3 +1,7 @@
+<?php
+    require("../db.php");
+    require("../correction.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +18,31 @@
             <p style="padding-bottom:10px" type="text" class="form__title">
                 Корректировка ввода
             </p>
-            <textarea name="form__textarea" id="textarea"
-                        placeholder="Введите свою строку..">
-            </textarea>
+            <textarea
+                name="textarea"
+                id="textarea"
+                class="form__textarea"
+                placeholder="Введите свою строку.."
+                ></textarea>
             <button type="submit" class="form__submit">Проверить</button>
         </form>
         <div class="form-response">
-            
+            <p class="form-response__query">___________</p>
+            <?php
+                $conn = mysqli_connect(...$config);
+
+                $query = "SELECT text FROM correction";
+    
+
+                $result = mysqli_query($conn, $query);
+                $id = 1;
+                foreach ($result as $row) {
+                    
+                    echo "<p>".$id.".".charSelection( $row['text'] )."</p>";
+                    $id++;
+                }
+                
+            ?>
         </div>
     </main>
     <script src="../script/script.js" ></script>    
