@@ -5,26 +5,25 @@
     $error_loc = 'Location: http://corrstr/pages/404.php';
 
     
-    
-
-    if (isset($_POST['value']) and $_POST['value'] !== '')
+    if (isset($_POST['correct_value']) and $_POST['correct_value'] !== '')
+    {
+        $str = trim($_POST['correct_value']);
+        print(charSelection($str));
+    }
+    else if (isset($_POST['check_value']) and $_POST['check_value'] !== '')
     {   
-        $str = trim($_POST['value']);
+        $str = trim($_POST['check_value']);
         $conn = mysqli_connect(...$config);
 
-
-        $sql_req = "INSERT INTO correction(`id`, `text`) VALUES(NULL, '$str')";
-        
-        $result = mysqli_query($conn, $sql_req);
-
+        $query = "INSERT INTO correction(`id`, `text`) VALUES(NULL, '$str')";
+        $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-
-
-        // echo $str;
     
         print(charSelection($str));
 
-    } else {
+    }
+    else
+    {
         header('Location: http://corrstr/pages/main.php');
     }
 ?>

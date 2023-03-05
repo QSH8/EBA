@@ -7,29 +7,36 @@ const formResponse = document.querySelector('.form-response')
 
 var xhr = new XMLHttpRequest();
 
-const cachingCorrection = ( str ) => {
+const check = ( event ) => {
+    event.preventDefault()
+    const correct_value = event.target.value 
+    const data = { correct_value }
+    $.ajax({
+        type: "post",
+        url: "index.php",
+        data: data,
+        success: ( response ) => {
+            correction(response)
+        }
+    })
+}
+
+const correction = ( str ) => {
     
     const p_result = document.createElement('p')
     p_result.className = 'form-response__query'
 
     p_result.innerHTML = `${str}`
-    console.log(p_result.innerHTML);
-    const spans = p_result.querySelectorAll('span')
-    spans.forEach(span => span.style.fontWeight = 'bold')
+
+
 
     formResponse.insertAdjacentHTML('afterbegin', p_result.outerHTML)
 }
 
-const correction = ( str ) => {
-    
-    
-    // textarea.insertAdjacentHTML(`afterbegin`, p_result.outerHTML)
-}
-
 const requestHandler = ( event ) => {
     event.preventDefault()
-    const value = event.target.textarea.value
-    const data = { value }
+    const check_value = event.target.textarea.value
+    const data = { check_value }
 
     $.ajax({
         type: "post",
@@ -37,11 +44,11 @@ const requestHandler = ( event ) => {
         data: data,
         success: ( response ) => {
             correction(response)
-            cachingCorrection(response)
-            console.log(response);
+            textarea.onchange = (event) => check(event)
         }
     })
 
 }
 
 form.addEventListener('submit', requestHandler)
+

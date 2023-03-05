@@ -1,6 +1,7 @@
 <?php
     require("../db.php");
     require("../correction.php");
+    $char_sel = 'charSelection'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +20,10 @@
                 Корректировка ввода
             </p>
             <textarea
-                name="textarea"
-                id="textarea"
-                class="form__textarea"
-                placeholder="Введите свою строку.."
+                name='textarea'
+                id='textarea'
+                class='form__textarea'
+                placeholder='Введите свою строку..'
                 ></textarea>
             <button type="submit" class="form__submit">Проверить</button>
         </form>
@@ -38,7 +39,7 @@
                 $id = 1;
                 foreach ($result as $row) {
                     
-                    echo "<p>".$id.".".charSelection( $row['text'] )."</p>";
+                    echo "<p>".$id.".".$char_sel( $row['text'] )."</p>";
                     $id++;
                 }
                 

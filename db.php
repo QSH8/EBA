@@ -25,6 +25,7 @@
     )";
     
     mysqli_query($conn, $table);
+
     
     mysqli_close($conn)
 ?>
