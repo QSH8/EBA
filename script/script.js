@@ -2,7 +2,6 @@ console.log('Working');
 
 
 const form = document.querySelector('.form')
-const textarea = document.querySelector('.form__textarea')
 const formResponse = document.querySelector('.form-response')
 
 var xhr = new XMLHttpRequest();
@@ -25,16 +24,14 @@ const correction = ( str ) => {
     
     const p_result = document.createElement('p')
     p_result.className = 'form-response__query'
-
     p_result.innerHTML = `${str}`
-
-
 
     formResponse.insertAdjacentHTML('afterbegin', p_result.outerHTML)
 }
 
 const requestHandler = ( event ) => {
     event.preventDefault()
+
     const check_value = event.target.textarea.value
     const data = { check_value }
 
@@ -44,10 +41,9 @@ const requestHandler = ( event ) => {
         data: data,
         success: ( response ) => {
             correction(response)
-            textarea.onchange = (event) => check(event)
+            event.target.textarea.onchange = (event) => check(event)
         }
     })
-
 }
 
 form.addEventListener('submit', requestHandler)

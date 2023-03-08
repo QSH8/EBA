@@ -1,7 +1,6 @@
 <?php
     require("../db.php");
     require("../correction.php");
-    $char_sel = 'charSelection'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +36,12 @@
 
                 $result = mysqli_query($conn, $query);
                 $id = 1;
-                foreach ($result as $row) {
-                    
-                    echo "<p>".$id.".".$char_sel( $row['text'] )."</p>";
-                    $id++;
+                if ($result !== NULL) {
+                    foreach ($result as $row) {
+                        
+                        echo "<p>".$id.".".charSelection( $row['text'] )."</p>";
+                        $id++;
+                    }
                 }
                 
             ?>
